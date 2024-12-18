@@ -20,7 +20,10 @@ spec:
     matchLabels:
       app: ostoy-frontend
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0  # Ensures at least one pod is always running
+      maxSurge: 1 
   replicas: 1
   template:
     metadata:
