@@ -9,6 +9,11 @@ spec:
     matchLabels:
       app: ostoy-microservice
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0  # Ensures at least one pod is always running
+      maxSurge: 1        # Creates one extra pod during the update
   template:
     metadata:
       labels:
